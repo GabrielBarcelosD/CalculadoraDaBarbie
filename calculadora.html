@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	<title>Calculadora javascript</title>
+    <style>
+
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'arial';
+	font-size:22px;
+}
+
+li{
+	list-style:none;
+}
+html {
+	height: 100%;
+	background: rgb(255, 221, 221);
+	background: radial-gradient(circle, rgb(236, 180, 227) 24%, rgb(150, 96, 155));
+	background-size: cover;
+}
+#container{
+	width: 290px;
+	text-align: center;
+	height:auto;
+	margin:4px auto;
+}
+#calculadora{
+	width: 260px;
+	height: 310px;
+	margin:0 auto;
+	padding:2px;
+	background-color: #ce16d4;
+    
+    box-shadow: 5px 5px 6px 3px #757575;
+	background-image: url(Barbie1.jpg);
+}
+.input-valor{
+	margin:8px auto;
+	width:95%;
+	height:30px;
+	font-size: 16px;
+	overflow:hidden;
+	text-align: right;
+	color:#48484D;
+	padding: 4px;
+	background-color:#fff;
+	box-shadow: inset -1px -1px 4px 1px #eee;
+}
+.chave li{
+	width:50px;
+	height:30px;
+	border-radius:3px;
+	color:#fff;
+    background-image: linear-gradient( rgb(83, 19, 187), rgb(210, 32, 255));
+	cursor:pointer;
+	float: left;
+	margin: 6px -1px 5px 11px;
+	line-height: 30px;
+	text-align: center;
+	box-shadow: 0px 3px 1px 0px #7c1b85;
+}
+.chave li:hover{
+    background-image: linear-gradient( rgb(255, 255, 255), rgb(141, 141, 141));
+	color: #000000;
+	transition:0.2s;
+}
+.chave li:active{
+	box-shadow: 0px 1px 1px 0px #181d38;
+}
+.verificar{
+	width: 93.4% !important;
+}
+
+html, body{
+  height: 250px;
+}
+
+.container{
+  width: 350px;
+  height: 150px;
+  background: linear-gradient(0, #120c56, #000000);
+  overflow: hidden;
+}
+
+.stars{
+  position: relative;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  box-shadow: 
+  
+  -745px 120px white,
+    -830px 160px white,
+    -675px 110px white,
+    -790px 135px white,
+    -765px 235px rgb(255, 255, 255),
+
+
+  -405px 305px white,
+    -310px 200px white,
+    -220px 200px white,
+    -345px 120px white,
+    -290px 135px white,
+    -265px 235px white,
+  
+  50px 30px white, 
+    100px 80px white,
+    80px 120px white,
+    300px 20px white,
+    250px 130px white,
+    200px 50px white,
+    150px 100px white,
+    320px 100px white,
+
+    405px 325px white,
+    310px 220px white,
+    220px 240px white,
+    345px 150px white,
+    290px 175px white,
+    265px 265px white,
+
+    505px 345px white,
+    510px 250px white,
+    420px 270px white,
+    545px 145px white,
+    530px 167px white,
+    565px 279px rgb(255, 255, 255),
+
+    745px 178px white,
+    830px 192px white,
+    675px 145px white,
+    790px 165px white,
+    765px 285px rgb(255, 255, 255),
+
+    805px 305px white,
+    910px 200px white,
+    920px 200px white,
+    1130px 160px white,
+    975px 110px white,
+    1190px 135px white,
+    1265px 235px rgb(255, 255, 255);
+
+  animation: anim-stars 25s linear infinite;
+}
+
+.stars::after{
+  content: " ";
+  position: absolute;
+  top:350px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  box-shadow: 50px 30px white, 
+    100px 80px white,
+    80px 120px white,
+    300px 20px white,
+    250px 130px white,
+    200px 50px white,
+    150px 100px white,
+    320px 100px white;
+}
+
+.stars2{
+  position: relative;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+
+  box-shadow: 
+
+  -405px 305px white,
+    -310px 200px white,
+    -220px 200px white,
+    -345px 120px white,
+    -230px 160px white,
+    -170px 110px white,
+    -290px 135px white,
+    -265px 235px white,
+  
+  -225px 65px white,
+    -100px 160px white,
+    -40px 170px white,
+    -375px 140px white,
+    -330px 60px white,
+    -160px 230px white,
+    -310px 150px white,
+    -220px 115px white,
+
+  -125px 35px white,
+    -50px 80px white,
+    -60px 150px white,
+    -275px 90px white,
+    -230px 10px white,
+    -120px 130px white,
+    -300px 130px white,
+    -220px 115px white,
+
+  
+  15px 15px white, 
+    125px 35px white,
+    50px 80px white,
+    60px 150px white,
+    275px 90px white,
+    230px 10px white,
+    120px 130px white,
+    300px 130px white,
+    220px 115px white,
+
+	225px 65px white,
+    100px 160px white,
+    40px 170px white,
+    375px 140px white,
+    330px 60px white,
+    160px 230px white,
+    310px 150px white,
+    220px 115px white,
+
+    405px 305px white,
+    310px 200px white,
+    220px 200px white,
+    345px 120px white,
+    230px 160px white,
+    170px 110px white,
+    290px 135px white,
+    265px 235px white,
+
+    505px 305px white,
+    510px 200px white,
+    420px 200px white,
+    545px 120px white,
+    530px 160px white,
+    375px 110px white,
+    390px 135px white,
+    565px 235px rgb(255, 255, 255),
+
+    605px 305px white,
+    710px 200px white,
+    620px 200px white,
+    745px 120px white,
+    830px 160px white,
+    675px 110px white,
+    790px 135px white,
+    765px 235px rgb(255, 255, 255),
+
+    805px 305px white,
+    910px 200px white,
+    920px 200px white,
+    1045px 120px white,
+    1130px 160px white,
+    975px 110px white,
+    1190px 135px white,
+    1265px 235px rgb(255, 255, 255);
+
+  animation: anim-stars 25s linear infinite;
+}
+
+.stars2::after{
+  content: " ";
+  position: absolute;
+  top: 150px;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  box-shadow: 15px 15px white, 
+    125px 35px white,
+    50px 80px white,
+    10px 120px white,
+    275px 90px white,
+    230px 10px white,
+    120px 130px white,
+    300px 130px white,
+    220px 115px white,
+
+    225px 135px white,
+    150px 180px white,
+    10px 120px white,
+    275px 90px white,
+    230px 10px white,
+    120px 130px white,
+    300px 130px white,
+    220px 115px white,
+
+    425px 335px white,
+    350px 240px white,
+    120px 220px white,
+    375px 180px white,
+    260px 110px white,
+    150px 160px white,
+    320px 150px white,
+    260px 215px white;
+}
+
+
+@keyframes anim-stars {
+    from {
+        transform: translateY(70px);
+    }
+    to {
+        transform: translateY(-350px);
+    }
+}
+
+.texto-animado { 
+    width:100%; 
+    margin:auto; 
+    display: block;
+    overflow:hidden;
+    
+} 
+.texto-animado h1 {
+  margin-top: 5%;
+  font-size: 1.8em;
+  display: inline-block;
+  border-bottom: 1px #ffffff solid;
+}
+.texto-animado h1 span {
+  
+  position: relative;
+  float: left;
+  font-family: 'open_sansbold';
+  color:#081ddf;
+  text-shadow: 2px 1px 4px #757575;
+}
+.texto-animado h1 span:first-child {
+  color: #e93737;
+  text-shadow: 2px 1px 4px #757575;
+  margin-right: 15px;
+  font-weight:bold;
+  font-family: 'open_sansbold';
+}
+.texto-animado p {
+  
+    width: auto;
+    display: block;
+    font-size: 0.9em;
+    text-shadow: 2px 1px 4px #757575;
+    color: #050404;
+    padding-top: 0.3em;
+    letter-spacing: 4.5px;
+  
+}
+.delay-04 {
+  -moz-animation-delay: 0.4s;
+  -webkit-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+.delay-06 {
+  -moz-animation-delay: 0.6s;
+  -webkit-animation-delay: 0.6s;
+  animation-delay: 0.6s;
+}
+.delay-10 {
+  -moz-animation-delay: 1s;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+}
+.delay-15 {
+  -moz-animation-delay: 1.5s;
+  -webkit-animation-delay: 1.5s;
+  animation-delay: 1.5s;
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes flipInX {
+  0% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    -webkit-transition-timing-function: ease-in;
+    transition-timing-function: ease-in;
+    opacity: 0;
+  }
+  40% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    -webkit-transition-timing-function: ease-in;
+    transition-timing-function: ease-in;
+  }
+  60% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+  80% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+  100% {
+    -webkit-transform: perspective(400px);
+    transform: perspective(400px);
+  }
+}
+@keyframes flipInX {
+  0% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    -webkit-transition-timing-function: ease-in;
+    transition-timing-function: ease-in;
+    opacity: 0;
+  }
+  40% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    -webkit-transition-timing-function: ease-in;
+    transition-timing-function: ease-in;
+  }
+  60% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+  80% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+  100% {
+    -webkit-transform: perspective(400px);
+    transform: perspective(400px);
+  }
+}
+.flipInX {
+  -webkit-backface-visibility: visible !important;
+  backface-visibility: visible !important;
+  -webkit-animation-name: flipInX;
+  animation-name: flipInX;
+}
+
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+    </style>
+
+</head>
+<body class="imagem">
+	<div id="container">
+	
+		<div class="texto-animado">
+                  
+			<h1 class="animated fadeIn delay-04">
+				 <span class="animated flipInX delay-06">O mundo é</span><span class="animated flipInX delay-10">feito de magias</span>
+			</h1>
+						  
+			<p class="animated flipInX delay-15">Gab e Gabi </p>
+						  
+		  </div>
+
+		<div id="calculadora">
+			<header class="top">
+				<div class="input-valor"></div>
+			</header>
+			<ul class="chave">
+				<li>7</li>
+				<li>8</li>
+				<li>9</li>
+				<li class="operador">/</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+				<li class="operador">*</li>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li class="operador">-</li>
+				<li>0</li>
+				<li>.</li>
+				<li class="operador">+</li>
+				<li>c</li>
+				<li class="verificar">=</li>
+			</ul>
+		</div>
+		<div class="stars" ></div>
+		<div class="stars2" ></div>
+		</div>
+	</div>
+  <script>
+
+var btn 	  = document.querySelectorAll(".chave li"),
+	input 	  = document.querySelector(".input-valor"),
+	operador  = document.querySelectorAll(".operador");
+
+
+for(var i = 0; i < btn.length; i++){
+	document.onkeypress = function(event){
+		var chave = event.charCode; 
+		for(var e = 0; e <= 10; e++){
+			if(chave === (48+e)){
+				input.innerHTML += e;
+			}
+		}
+		switch (chave){
+			case 42:
+				input.innerHTML += "*";
+				break;
+			case 43:
+				input.innerHTML += "+";
+				break;
+			case 45:
+				input.innerHTML += "-";
+				break;
+			case 46:
+				input.innerHTML += ".";
+				break;
+			case 47:
+				input.innerHTML += "/";
+				break;
+			case 13:
+			case 61:
+				var equacao = input.innerHTML;
+				if(equacao){
+					try {
+						input.innerHTML = eval(equacao);
+					} catch (e) {
+						alert('Erro na expressão');
+
+					} 
+				}
+				break;
+			case 67:
+			case 99:
+				input.innerHTML = "";
+				break;						
+			default:
+				break;
+		}
+	};
+	btn[i].addEventListener('click',function(){
+		var btnVal 	 = this.innerHTML,
+			inputVal = input.innerHTML;
+
+		switch (btnVal){
+			case "c":
+				input.innerHTML = "";
+				break;
+			case "=":
+			
+				var equacao = inputVal;
+				
+				if(equacao){
+					try {
+						input.innerHTML = eval(equacao);
+					} catch (e) {
+						alert('Erro na expressão');
+
+					} 
+				}
+				break;
+			default:
+				input.innerHTML += btnVal;
+				break;	
+		}
+
+	});
+}
+
+
+  </script>
+</body>
